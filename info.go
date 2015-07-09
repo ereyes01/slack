@@ -126,7 +126,7 @@ func (t JSONTime) String() string {
 type Team struct {
 	Id     string `json:"id"`
 	Name   string `json:"name"`
-	Domain string `json:"name"`
+	Domain string `json:"domain"`
 }
 
 // Icons XXX: needs further investigation

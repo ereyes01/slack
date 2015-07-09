@@ -92,5 +92,6 @@ func post(path string, values url.Values, intf interface{}, debug bool) error {
 		return err
 	}
 	defer resp.Body.Close()
+
 	return parseResponseBody(resp.Body, &intf, debug)
 }
