@@ -320,4 +320,7 @@ var eventMapping = map[string]interface{}{
 	"bot_changed": BotChangedEvent{},
 
 	"accounts_changed": AccountsChangedEvent{},
+
+	"reaction_added":   ReactionAddedEvent{},
+	"reaction_removed": ReactionRemovedEvent{},
 }
