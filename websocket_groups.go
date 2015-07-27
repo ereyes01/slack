@@ -15,5 +15,17 @@ type GroupArchiveEvent ChannelInfoEvent
 type GroupUnarchiveEvent ChannelInfoEvent
 type GroupLeftEvent ChannelInfoEvent
 type GroupJoinedEvent ChannelJoinedEvent
-type GroupRenameEvent ChannelRenameEvent
+
+type GroupRenameEvent struct {
+	Type      string          `json:"type"`
+	Group     GroupRenameInfo `json:"channel"`
+	Timestamp string          `json:"ts"`
+}
+
+type GroupRenameInfo struct {
+	Id      string `json:"id"`
+	Name    string `json:"name"`
+	Created string `json:"created"`
+}
+
 type GroupHistoryChangedEvent ChannelHistoryChangedEvent

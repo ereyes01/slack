@@ -31,14 +31,15 @@ type ChannelInfoEvent struct {
 }
 
 type ChannelRenameEvent struct {
-	Type    string            `json:"type"`
-	Channel ChannelRenameInfo `json:"channel"`
+	Type      string            `json:"type"`
+	Channel   ChannelRenameInfo `json:"channel"`
+	Timestamp string            `json:"event_ts"`
 }
 
 type ChannelRenameInfo struct {
-	Id      string   `json:"id"`
-	Name    string   `json:"name"`
-	Created JSONTime `json:"created"`
+	Id      string          `json:"id"`
+	Name    string          `json:"name"`
+	Created *JSONTimeString `json:"created"`
 }
 
 type ChannelHistoryChangedEvent struct {
