@@ -29,6 +29,20 @@ type authTestResponseFull struct {
 	AuthTestResponse
 }
 
+type UserListItem struct {
+	Id string `json:"id"`
+	Name string `json:"name"`
+}
+
+type UsersListResponse struct {
+	Users    []UserListItem `json:"members"`
+}
+
+type usersListResponseFull struct {
+	SlackResponse
+	UsersListResponse
+}
+
 type Client struct {
 	config struct {
 		token string
@@ -54,6 +68,19 @@ func (api *Client) AuthTest() (response *AuthTestResponse, error error) {
 		return nil, errors.New(responseFull.Error)
 	}
 	return &responseFull.AuthTestResponse, nil
+}
+
+// Gets the list of users
+func (api *Client) UsersList() (response *UsersListResponse, error error) {
+	responseFull := &usersListResponseFull{}
+	err := post("users.list", url.Values{"token": {api.config.token}}, responseFull, api.debug)
+	if err != nil {
+		return nil, err
+	}
+	if !responseFull.Ok {
+		return nil, errors.New(responseFull.Error)
+	}
+	return &responseFull.UsersListResponse, nil
 }
 
 // SetDebug switches the api into debug mode
