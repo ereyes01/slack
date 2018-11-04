@@ -139,7 +139,6 @@ type Bot struct {
 	Id      string `json:"id"`
 	Name    string `json:"name"`
 	Deleted bool   `json:"deleted"`
-	Icons   Icons  `json:"icons"`
 }
 
 // Info contains various details about Users, Channels, Bots and the authenticated user.
